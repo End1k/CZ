@@ -1,17 +1,18 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.Point
+import android.graphics.PointF
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.*
 import android.util.Log
-
-
-
+import android.view.MotionEvent
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,12 +20,29 @@ class MainActivity : AppCompatActivity() {
     var ai1 : AiTicTacToe = AiTicTacToe()
     var g : Game = Game(ai1, ai1)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
+        viewttt.g = g
 
+        viewttt.setOnTouchListener(
+            object : View.OnTouchListener {
+            override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                var p : PointF = PointF()
+                if (p1 != null) {
+                    p.x = p1.x / (viewttt.width / g.psize)
+                    p.y = p1.y / (viewttt.height / g.psize)
+                    Log.d("POSITION", "${viewttt.width} , ${viewttt.height}")
+                    g.roundUser(p)
+
+                    Log.d("POSITION", "$p")
+                    Log.d("POSITION", "${p1.x} , ${p1.y}")
+                }
+                return true
+                }
+
+        })
+    }
     fun bclick(v:View)
     {
         g.round()
@@ -32,8 +50,12 @@ class MainActivity : AppCompatActivity() {
         if (g.check()) {
             textView.setText("Победил игрок номер " + g.winner?.toString())
         }
+
     }
+
 }
+
+
 
 
 
@@ -200,6 +222,11 @@ class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
         turn++
     }
 
+    fun roundUser(t: PointF){
+        this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
+        turn++
+    }
+
     fun output()
     {
         for (i in 0..this.psize - 1) { //столбцы
@@ -287,7 +314,31 @@ class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
         }
         return false
     }
+    fun draw(canvas: Canvas){
+        var brus:Paint = Paint()
+        brus.strokeWidth = 20f
+        for (i in 0..psize){
+            canvas.drawLine(i*(canvas.width/psize).toFloat(), 0f, i*(canvas.width/psize).toFloat(),
+                canvas.height.toFloat(),brus)
+
+        }
+        for (i in 0..psize) {
+            canvas.drawLine(
+                0f, i * (canvas.height / psize).toFloat(),
+                canvas.width.toFloat(),i * (canvas.height/ psize).toFloat(), brus )
+        }
+    }
 }
+
+class ViewTTT( context: Context, attributeSet: AttributeSet) : View(context, attributeSet){
+    var g: Game? = null
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        g?.draw(canvas)
+        invalidate()
+    }
+}
+
 //    fun buttonclick(v:View)
 //    {
 //        for (o in 1..64)
