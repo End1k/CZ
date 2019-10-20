@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     {
         g.round()
         g.output()
+        if (g.check()) {
+            textView.setText("Победил игрок номер " + g.winner?.toString())
+        }
     }
 }
 
@@ -97,7 +100,7 @@ class AiTicTacToe{
 
         //вертикали
         for (i in 0..g.psize-1) { //столбцы
-            for (l in 1..g.psize-g.needToWin) { //строки
+            for (l in 0..g.psize-g.needToWin) { //строки
                 var p: Int = 0
                 var streak: Int = 0
                 for (n in 0..g.needToWin-1) { //клетки линии
@@ -125,8 +128,8 @@ class AiTicTacToe{
         }
 
         //горизонтали
-        for (i in 1..g.psize-g.needToWin) { //столбцы
-            for (l in 1..g.psize-1) { //строки
+        for (i in 0..g.psize-g.needToWin) { //столбцы
+            for (l in 0..g.psize-1) { //строки
                 var p: Int = 0
                 var streak: Int = 0
                 for (n in 0..g.needToWin-1) { //клетки линии
@@ -163,8 +166,8 @@ class AiTicTacToe{
             var l: Int = 0
         }
 
-        for (i in 1..g.psize-1) {
-            for (l in 1..g.psize-1) {
+        for (i in 0..g.psize-1) {
+            for (l in 0..g.psize-1) {
                 if (wewes[i][l] > BC.ozh)
                 {
                     if (g.pole[i][l] == 0)
@@ -184,9 +187,9 @@ class AiTicTacToe{
 }
 
 class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
-
-    var psize: Int = 3
-    var needToWin : Int = 3
+    var winner: Int? = null
+    var psize: Int = 10
+    var needToWin : Int = 5
     var pole: Array<Array<Int>> = Array(psize, { Array(psize, {0})})
     var turn: Int = 0
 
@@ -204,9 +207,85 @@ class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
             for (l in 0..this.psize - 1) { //строки
                 ou += " " + this.pole[i][l].toString()
             }
-            Log.d("CONTROLLA","$ou \n")
+            Log.d("CONTROLLA","$ou       $i\n")
         }
-        Log.d("CONTROLLA","\n")
+        Log.d("CONTROLLA","\n\n\n\n+")
+    }
+
+    fun check() : Boolean
+    { //диагонали
+        for (i in 0..this.psize-this.needToWin) { //столбцы
+            for (l in 0..this.psize-this.needToWin) { //строки
+                for (p in 1..2) { //игроки
+
+                        var v : Int = 0 //верные клетки в линии
+                        for (n in 0..needToWin-1) { //клетки линии
+                            if (pole[i+n][l+n] == p) {v++}
+                        }
+                        if (v == needToWin) {
+                            winner = p
+                            return true
+                        }
+                    } // функция победы игрока номер P
+
+                }
+            }
+
+
+        //диагонали
+        for (i in 0..this.psize-this.needToWin) { //столбцы
+            for (l in this.needToWin-1..this.psize-1) { //строки
+                for (p in 1..2) { //игроки
+
+                    var v : Int = 0 //верные клетки в линии
+                    for (n in 0..needToWin-1) { //клетки линии
+                        if (pole[i+n][l-n] == p) {v++}
+                    }
+                    if (v == needToWin) {
+                        winner = p
+                        return true
+                    } // функция победы игрока номер P
+
+                }
+            }
+        }
+
+        //вертикали
+        for (i in 0..this.psize-1) { //столбцы
+            for (l in 0..this.psize-this.needToWin) { //строки
+                for (p in 1..2) { //игроки
+
+                    var v : Int = 0 //верные клетки в линии
+                    for (n in 0..needToWin-1) { //клетки линии
+                        if (pole[i][l+n] == p) {v++}
+                    }
+                    if (v == needToWin) {
+                        winner = p
+                        return true
+                    } // функция победы игрока номер P
+
+                }
+            }
+        }
+
+        //горизонтали
+        for (i in 0..this.psize-this.needToWin) { //столбцы
+            for (l in 0..this.psize-1) { //строки
+                for (p in 1..2) { //игроки
+
+                    var v : Int = 0 //верные клетки в линии
+                    for (n in 0..needToWin-1) { //клетки линии
+                        if (pole[i+n][l] == p) {v++}
+                    }
+                    if (v == needToWin) {
+                        winner = p
+                        return true
+                    } // функция победы игрока номер P
+
+                }
+            }
+        }
+        return false
     }
 }
 //    fun buttonclick(v:View)
