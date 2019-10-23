@@ -1,10 +1,7 @@
 package com.example.myapplication
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Point
-import android.graphics.PointF
+import android.graphics.*
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
@@ -230,8 +227,10 @@ class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
             turn++
             output() ///////////////////////////////////////////////////////////////////////////////
 
-
+            if (this.check()) {Log.d("CONTROLLA","ПОБЕДИЛ ИГРОК \n"); while (true) {}}
             round() ////////////////////////////////////////////////////////////////////////////////
+            output()
+            if (this.check()) {Log.d("CONTROLLA","ПОБЕДИЛ КОМПУДАКТЕР \n"); while (true) {}}
         }
     }
 
@@ -335,6 +334,21 @@ class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
                 0f, i * (canvas.height / psize).toFloat(),
                 canvas.width.toFloat(),i * (canvas.height/ psize).toFloat(), brus )
         }
+
+
+        var x:Int = 2
+        var y:Int = 3
+
+        brus.color = Color.BLUE  //BLUE O
+        canvas.drawCircle(x.toFloat() * (canvas.width / psize) + canvas.width / psize / 2  ,y.toFloat() * (canvas.height / psize) + canvas.height / psize / 2, (canvas.width / psize / 2).toFloat(), brus)
+
+        x = 5
+        y = 7
+
+
+        brus.color = Color.RED  //RED X
+        canvas.drawLine(x.toFloat() * (canvas.width / psize), y.toFloat() * (canvas.height / psize), (x+1).toFloat() * (canvas.width / psize), (y+1).toFloat() * (canvas.height / psize), brus)
+        canvas.drawLine((x+1).toFloat() * (canvas.width / psize), y.toFloat() * (canvas.height / psize), x.toFloat() * (canvas.width / psize), (y+1).toFloat() * (canvas.height / psize), brus)
     }
 }
 
