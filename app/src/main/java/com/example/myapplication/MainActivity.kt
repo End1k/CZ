@@ -30,10 +30,11 @@ class MainActivity : AppCompatActivity() {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                 var p : PointF = PointF()
                 if (p1 != null) {
-                    p.x = p1.x / (viewttt.width / g.psize)
-                    p.y = p1.y / (viewttt.height / g.psize)
+                    p.x = p1.y / (viewttt.height / g.psize)
+                    p.y = p1.x / (viewttt.width / g.psize)
                     Log.d("POSITION", "${viewttt.width} , ${viewttt.height}")
-                    g.roundUser(p)
+
+                    g.roundUser(p) ///////////////////////////////////////////////////////////////////////
 
                     Log.d("POSITION", "$p")
                     Log.d("POSITION", "${p1.x} , ${p1.y}")
@@ -223,8 +224,15 @@ class Game(val p1:AiTicTacToe, val p2 : AiTicTacToe){
     }
 
     fun roundUser(t: PointF){
-        this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
-        turn++
+        if (this.pole[t.x.toInt()][t.y.toInt()] == 0)
+        {
+            this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
+            turn++
+            output() ///////////////////////////////////////////////////////////////////////////////
+
+
+            round() ////////////////////////////////////////////////////////////////////////////////
+        }
     }
 
     fun output()
