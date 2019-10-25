@@ -43,12 +43,10 @@ class MainActivity : AppCompatActivity() {
     }
     fun bclick(v:View)
     {
-        g.round()
-        g.output()
-        if (g.check()) {
-            textView.setText("Победил игрок номер " + g.winner?.toString())
-        }
-
+        g.psize = 10
+        g.needToWin = 5
+        g.pole = Array(g.psize, { Array(g.psize, {0})})
+        g.turn = 0
     }
 
 }
