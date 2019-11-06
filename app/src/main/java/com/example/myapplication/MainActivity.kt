@@ -29,16 +29,11 @@ class MainActivity : AppCompatActivity() {
                 if (p1 != null) {
                     p.x = p1.y / (viewttt.height / g.psize)
                     p.y = p1.x / (viewttt.width / g.psize)
-                    Log.d("POSITION", "${viewttt.width} , ${viewttt.height}")
 
-                    g.roundUser(p) ///////////////////////////////////////////////////////////////////////
-
-                    Log.d("POSITION", "$p")
-                    Log.d("POSITION", "${p1.x} , ${p1.y}")
+                    g.roundUser(p)
                 }
                 return true
-                }
-
+            }
         })
     }
     fun bclick(v:View)
