@@ -8,15 +8,23 @@ class RealPlayer : Player(){
     override fun turning(g: Game) : Point
     {
 
-
         return Point()
     }
 
-    fun getCoordsOfTTC(g : Game, p : Point)
-    {
-        if (g.turn%2 == pTurn)
-        {
-            thisTurnChoice = p
-        }
+    fun setPoint(){
+
     }
+
+
+//    fun roundUser(g : Game, t: PointF){
+//        if (this.pole[t.x.toInt()][t.y.toInt()] == 0 && (!check()))
+//        {
+//            this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
+//            turn++
+//
+//            if (this.check()) {}
+//            round() ////////////////////////////////////////////////////////////////////////////////
+//            if (this.check()) {}
+//        }
+//    }
 }

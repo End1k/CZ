@@ -9,4 +9,5 @@ open class Player() {
     {
         return Point()
     }
+
 }

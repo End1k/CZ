@@ -9,36 +9,46 @@ class Game(val p1:Player, val p2 : Player){
     var needToWin : Int = 5
     var pole: Array<Array<Int>> = Array(psize, { Array(psize, {0})})
     var turn: Int = 0
-
+    var thisplayer: Int = 1
 
     fun round(){
-        if (!check())
+        while (turn < psize*psize)
         {
-            if (turn%2 == 0) {
-                var t: Point = p1.turning(this)
-                this.pole[t.x][t.y] = turn % 2 + 1
-                turn++
-            }
+            if (!check()) {
+                if (turn % 2 == 0) {
+                    var t: Point = p1.turning(this)
+                    this.pole[t.x][t.y] = turn % 2 + 1
+                    turn++
+                }
 
-            if (turn%2 == 1) {
-                var t: Point = p2.turning(this)
-                this.pole[t.x][t.y] = turn % 2 + 1
-                turn++
+                if (turn % 2 == 1 && turn < psize*psize) {
+                    var t: Point = p2.turning(this)
+                    this.pole[t.x][t.y] = turn % 2 + 1
+                    turn++
+                }
             }
         }
     }
 
-    fun roundUser(t: PointF){
+    fun roundUser(t: Point){
+        if (thisplayer == 0)
+        {
+            p1.getCoordsOfTTC(this, t)
+        }
+        if (thisplayer == 1)
+        {
+            p2.getCoordsOfTTC(this, t)
+        }
+
+
         if (this.pole[t.x.toInt()][t.y.toInt()] == 0 && (!check()))
         {
             this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
             turn++
 
-            if (this.check()) {
-                Log.d("CONTROLLA","ПОБЕДИЛ ИГРОК \n"); while (false) {}}
-            round() ////////////////////////////////////////////////////////////////////////////////
-            if (this.check()) {
-                Log.d("CONTROLLA","ПОБЕДИЛ КОМПУДАКТЕР \n"); while (false) {}}
+            if (this.check()) {}
+            round()
+            if (this.check()) {}
         }
     }
 

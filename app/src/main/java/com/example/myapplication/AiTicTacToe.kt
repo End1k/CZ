@@ -9,7 +9,7 @@ class AiTicTacToe : Player(){
         return evaluation(g)
     }
 
-    fun evaluation( g : Game): Point { // "il" - возвращает координаты
+    fun evaluation(g : Game): Point { // "il" - возвращает координаты
         var wewes: Array<Array<Int>> = Array(g.psize, { Array(g.psize, { 0 }) })//оценка веса поля
 
         //диагонали

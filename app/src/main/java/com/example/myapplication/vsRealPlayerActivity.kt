@@ -15,27 +15,32 @@ class vsRealPlayerActivity : AppCompatActivity() {
 
     var ai1 : AiTicTacToe = AiTicTacToe()
     var playe : RealPlayer = RealPlayer()
-    var g : Game = Game(playe, playe)
+    var g : Game = Game(ai1, playe)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vs_real_player)
+
+        ai1.pTurn = 0
+        playe.pTurn = 1
+
         viewttt.g = g
 
         viewttt.setOnTouchListener(
             object : View.OnTouchListener {
                 override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-                    var p : PointF = PointF()
+                    var p : Point = Point()
                     if (p1 != null) {
-                        p.x = p1.y / (viewttt.height / g.psize)
-                        p.y = p1.x / (viewttt.width / g.psize)
+                        p.x = (p1.y / (viewttt.height / g.psize)).toInt()
+                        p.y = (p1.x / (viewttt.width / g.psize)).toInt()
 
                         g.roundUser(p)
                     }
                     return true
                 }
+        })
 
-            })
+        g.round()
     }
     fun bclick(v: View)
     {
