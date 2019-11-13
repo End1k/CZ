@@ -1,20 +1,22 @@
-package com.example.myapplication
+package com.example.myapplication.mode
 
-import android.content.Context
 import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import com.example.myapplication.Game
+import com.example.myapplication.R
+import com.example.myapplication.player.AiTicTacToe
+import com.example.myapplication.player.RealPlayer
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.pow
 
 class vsRealPlayerActivity : AppCompatActivity() {
 
-    var ai1 : AiTicTacToe = AiTicTacToe()
-    var playe : RealPlayer = RealPlayer()
+    var ai1 : AiTicTacToe =
+        AiTicTacToe()
+    var playe : RealPlayer =
+        RealPlayer()
     var g : Game = Game(ai1, playe)
 
     override fun onCreate(savedInstanceState: Bundle?) {

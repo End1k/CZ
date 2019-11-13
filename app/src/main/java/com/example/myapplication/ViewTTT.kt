@@ -7,6 +7,7 @@ import android.view.View
 
 class ViewTTT(context: Context, attributeSet: AttributeSet) : View(context, attributeSet){
     var g: Game? = null
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         g?.draw(canvas)

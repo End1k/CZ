@@ -1,15 +1,15 @@
 package com.example.myapplication
 
 import android.graphics.*
-import android.util.Log
+import com.example.myapplication.player.Player
 
-class Game(val p1:Player, val p2 : Player){
+class Game(val p1: Player, val p2 : Player){
     var winner: Int? = null
     var psize: Int = 10
     var needToWin : Int = 5
     var pole: Array<Array<Int>> = Array(psize, { Array(psize, {0})})
     var turn: Int = 0
-    var thisplayer: Int = 1
+    var thisPlayer: Int = 1
 
     fun round(){
         while (turn < psize*psize)
@@ -30,29 +30,29 @@ class Game(val p1:Player, val p2 : Player){
         }
     }
 
-    fun roundUser(t: Point){
-        if (thisplayer == 0)
-        {
-            p1.getCoordsOfTTC(this, t)
-        }
-        if (thisplayer == 1)
-        {
-            p2.getCoordsOfTTC(this, t)
-        }
+//    fun roundUser(t: Point){
+//        if (thisplayer == 0)
+//        {
+//            p1.getCoordsOfTTC(this, t)
+//        }
+//        if (thisplayer == 1)
+//        {
+//            p2.getCoordsOfTTC(this, t)
+//        }
+//
+//
+//        if (this.pole[t.x.toInt()][t.y.toInt()] == 0 && (!check()))
+//        {
+//            this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
+//            turn++
+//
+//            if (this.check()) {}
+//            round()
+//            if (this.check()) {}
+//        }
+//    }
 
-
-        if (this.pole[t.x.toInt()][t.y.toInt()] == 0 && (!check()))
-        {
-            this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
-            turn++
-
-            if (this.check()) {}
-            round()
-            if (this.check()) {}
-        }
-    }
-
-    fun check() : Boolean
+    fun check( ) : Boolean
     { //диагонали
         for (i in 0..this.psize-this.needToWin) { //столбцы
             for (l in 0..this.psize-this.needToWin) { //строки

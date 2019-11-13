@@ -1,6 +1,7 @@
-package com.example.myapplication
+package com.example.myapplication.player
 
 import android.graphics.Point
+import com.example.myapplication.Game
 import kotlin.math.pow
 
 class AiTicTacToe : Player(){
