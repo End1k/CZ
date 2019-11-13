@@ -3,7 +3,10 @@ package com.example.myapplication
 import android.graphics.*
 import com.example.myapplication.player.Player
 
-class Game(val p1: Player, val p2 : Player){
+class Game(val p1n: Player, val p2n : Player){
+    var p1 : Player = p1n
+    var p2 : Player = p2n
+
     var winner: Int? = null
     var psize: Int = 10
     var needToWin : Int = 5
@@ -11,24 +14,24 @@ class Game(val p1: Player, val p2 : Player){
     var turn: Int = 0
     var thisPlayer: Int = 1
 
-    fun round(){
-        while (turn < psize*psize)
-        {
-            if (!check()) {
-                if (turn % 2 == 0) {
-                    var t: Point = p1.turning(this)
-                    this.pole[t.x][t.y] = turn % 2 + 1
-                    turn++
-                }
-
-                if (turn % 2 == 1 && turn < psize*psize) {
-                    var t: Point = p2.turning(this)
-                    this.pole[t.x][t.y] = turn % 2 + 1
-                    turn++
-                }
-            }
-        }
-    }
+//    fun round(){
+//        while (turn < psize*psize)
+//        {
+//            if (!check()) {
+//                if (turn % 2 == 0) {
+//                    var t: Point = p1.turning(this)
+//                    this.pole[t.x][t.y] = turn % 2 + 1
+//                    turn++
+//                }
+//
+//                if (turn % 2 == 1 && turn < psize*psize) {
+//                    var t: Point = p2.turning(this)
+//                    this.pole[t.x][t.y] = turn % 2 + 1
+//                    turn++
+//                }
+//            }
+//        }
+//    }
 
 //    fun roundUser(t: Point){
 //        if (thisplayer == 0)

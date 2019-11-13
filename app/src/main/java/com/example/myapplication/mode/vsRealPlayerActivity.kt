@@ -36,13 +36,11 @@ class vsRealPlayerActivity : AppCompatActivity() {
                         p.x = (p1.y / (viewttt.height / g.psize)).toInt()
                         p.y = (p1.x / (viewttt.width / g.psize)).toInt()
 
-                        g.roundUser(p)
+                        //g.roundUser(p)
                     }
                     return true
                 }
         })
-
-        g.round()
     }
     fun bclick(v: View)
     {

@@ -7,21 +7,23 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.MotionEvent
 import com.example.myapplication.player.AiTicTacToe
+import com.example.myapplication.player.RealPlayer
 
 class MainActivity : AppCompatActivity() {
 
-    var ai1 : AiTicTacToe =
-        AiTicTacToe()
-    var ai2 : AiTicTacToe =
-        AiTicTacToe()
-    var g : Game = Game(ai1, ai2)
+    var ai1 : AiTicTacToe = AiTicTacToe()
+    //var ai2 : AiTicTacToe =
+        //AiTicTacToe()
+    var playe : RealPlayer = RealPlayer()
+
+    var g : Game = Game(ai1, playe)
     var sd : Controller = Controller(g)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         ai1.pTurn = 0
-        ai2.pTurn = 1
+        playe.pTurn = 1
 
         viewttt.g = g
 
@@ -34,13 +36,11 @@ class MainActivity : AppCompatActivity() {
                         p.x = (p1.y / (viewttt.height / g.psize)).toInt()
                         p.y = (p1.x / (viewttt.width / g.psize)).toInt()
 
-                        sd.turn(p)
+                        sd.turni(p)
                     }
                     return true
                 }
         })
-
-        g.round()
     }
     fun bclick(v:View)
     {

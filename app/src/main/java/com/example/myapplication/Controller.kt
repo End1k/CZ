@@ -3,16 +3,21 @@ package com.example.myapplication
 import android.graphics.Point
 import com.example.myapplication.player.Player
 
-class Controller(gn: Game?) {
-    var g: Game? = gn
-    var p1 : Player? = null
-    var p2 : Player? = null
+class Controller(gn: Game) {
+    var g: Game = gn
+    var p1 : Player?
+    var p2 : Player?
+    init {
+        p1 = g.p1
+        p2 = g.p2
+    }
+
 
     var turn : Int = 1
 
 
     fun checkTurn(): Boolean{
-        return (turn%2 == g!!.thisPlayer)
+        return (turn%2 == g.thisPlayer)
     }
     fun getPlayer(): Player?
     {
@@ -29,22 +34,19 @@ class Controller(gn: Game?) {
 
 
     fun setPlace(p :Point, char : Int){
-        g!!.pole[p.x][p.y] = char
+        g.pole[p.x][p.y] = char
     }
 
-    fun turn(p: Point) {
-        if (g!!.pole[p.x][p.y]==0) {
+    fun turni(p: Point) {
+        if (g.pole[p.x][p.y]==0) {
             if (checkTurn()) {
-                setPlace(getPlayer()!!.turning(g!!), getC())
+                setPlace(p, getC())
                 turn++
-                turn(getPlayer()!!.turning(g!!))
+                turni(getPlayer()!!.turning(g))
+            } else {
+                setPlace(p, getC())
+                turn++
             }
         }
-        else {
-            setPlace(getPlayer()!!.turning(g!!), getC())
-            turn++
-        }
-
     }
-
 }
