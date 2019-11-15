@@ -1,9 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.controller
 
 import android.graphics.Point
+import com.example.myapplication.Game
 import com.example.myapplication.player.Player
 
-class Controller(gn: Game) {
+open class Controller(gn: Game) {
     var g: Game = gn
     var p1 : Player?
     var p2 : Player?
@@ -37,16 +38,7 @@ class Controller(gn: Game) {
         g.pole[p.x][p.y] = char
     }
 
-    fun turni(p: Point) {
-        if (g.pole[p.x][p.y]==0) {
-            if (checkTurn()) {
-                setPlace(p, getC())
-                turn++
-                turni(getPlayer()!!.turning(g))
-            } else {
-                setPlace(p, getC())
-                turn++
-            }
-        }
+    open fun turni(p: Point) {
+
     }
 }
