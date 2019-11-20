@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.*
 import android.util.Log
 import android.view.MotionEvent
+import com.example.myapplication.controller.Controller
+import com.example.myapplication.controller.PlayerVsAiController
 import com.example.myapplication.player.AiTicTacToe
 import com.example.myapplication.player.RealPlayer
 import com.google.firebase.database.DatabaseReference
@@ -19,12 +21,12 @@ import com.google.firebase.database.FirebaseDatabase
 class MainActivity : AppCompatActivity() {
 
     var ai1 : AiTicTacToe = AiTicTacToe()
-    //var ai2 : AiTicTacToe =
-        //AiTicTacToe()
+
     var playe : RealPlayer = RealPlayer()
 
     var g : Game = Game(ai1, playe)
-    var sd : Controller = Controller(g)
+    var sd : PlayerVsAiController =
+        PlayerVsAiController(g)
 
     //FirebaseDatabase database
     //DatabaseReference myRef
