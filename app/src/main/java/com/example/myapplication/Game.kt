@@ -12,7 +12,7 @@ class Game(val p1n: Player, val p2n : Player){
     var needToWin : Int = 5
     var pole: Array<Array<Int>> = Array(psize, { Array(psize, {0})})
     var turn: Int = 0
-    var thisPlayer: Int = 1
+    var thisPlayer: Int = 0
 
 //    fun round(){
 //        while (turn < psize*psize)
