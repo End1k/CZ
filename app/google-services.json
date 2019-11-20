@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "373954206112",
+    "firebase_url": "https://krenol-44d18.firebaseio.com",
+    "project_id": "krenol-44d18",
+    "storage_bucket": "krenol-44d18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373954206112:android:fd20020932b0f17b9c2cc5",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373954206112-l3daqub51dkg5jt7qbuc6032phl31bth.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "4d3e1e1b6027c0f96fc411111b45da307913b4a8"
+          }
+        },
+        {
+          "client_id": "373954206112-pegl7qaoinr74nvfvchat1e094t6l7e0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6LfasU8YaSMN6SQvVlCPbXKjTNfD9hFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373954206112-pegl7qaoinr74nvfvchat1e094t6l7e0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
