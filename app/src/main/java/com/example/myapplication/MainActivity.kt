@@ -1,13 +1,20 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.graphics.*
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.*
+import android.util.Log
 import android.view.MotionEvent
 import com.example.myapplication.player.AiTicTacToe
 import com.example.myapplication.player.RealPlayer
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     var g : Game = Game(ai1, playe)
     var sd : Controller = Controller(g)
+
+    //FirebaseDatabase database
+    //DatabaseReference myRef
+    var  database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    var myRef : DatabaseReference = database.getReference("message")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     return true
                 }
+
         })
     }
     fun bclick(v:View)
