@@ -14,7 +14,7 @@ open class Controller(gn: Game) {
     }
 
 
-    var turn : Int = 1
+    var turn : Int = 0
 
 
     fun checkTurn(): Boolean{

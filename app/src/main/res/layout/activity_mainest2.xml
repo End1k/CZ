@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/SERIYYYYY"
     tools:context=".Mainest2Activity">
 
     <Button
@@ -14,7 +14,7 @@
         android:background="@drawable/comp"
         android:onClick="toComputer"
         android:text="PLAY VS COMPUTER"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/BELIYYYYY"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_height="157dp"
         android:background="@drawable/man"
         android:text="PLAY VS REAL PLAYER"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/BELIYYYYY"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
