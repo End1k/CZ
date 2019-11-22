@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AfterGameActivity"></activity>
-        <activity android:name=".mode.vsRealPlayerActivity" />
+        <activity android:name=".vsRealPlayerActivity" />
         <activity android:name=".Mainest2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

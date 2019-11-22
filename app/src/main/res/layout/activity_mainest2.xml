@@ -30,6 +30,7 @@
         android:text="PLAY VS REAL PLAYER"
         android:textColor="@color/BELIYYYYY"
         android:textSize="30sp"
+        android:onClick="toPlayer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

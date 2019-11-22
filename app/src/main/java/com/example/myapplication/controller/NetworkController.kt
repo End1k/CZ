@@ -22,7 +22,8 @@ class NetworkController(gn: Game) : Controller(gn) {
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+                //turni(p0. )
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
@@ -31,7 +32,11 @@ class NetworkController(gn: Game) : Controller(gn) {
         })
     }
 
+     fun lala(p : Point){
+         myRef.push()
+     }
+
     override fun turni(p: Point) {
-        myRef.push().setValue(p)
+
     }
 }

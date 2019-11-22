@@ -17,4 +17,9 @@ class Mainest2Activity : AppCompatActivity() {
         var next: Intent = Intent(this, MainActivity::class.java)
         startActivity(next)
     }
+    fun toPlayer(v: View)
+    {
+        var next: Intent = Intent(this, vsRealPlayerActivity::class.java)
+        startActivity(next)
+    }
 }

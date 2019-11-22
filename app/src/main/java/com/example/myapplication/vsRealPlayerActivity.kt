@@ -1,4 +1,4 @@
-package com.example.myapplication.mode
+package com.example.myapplication
 
 import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
@@ -7,24 +7,26 @@ import android.view.MotionEvent
 import android.view.View
 import com.example.myapplication.Game
 import com.example.myapplication.R
+import com.example.myapplication.controller.PlayerVsAiController
+import com.example.myapplication.controller.PlayerVsPlayerController
 import com.example.myapplication.player.AiTicTacToe
 import com.example.myapplication.player.RealPlayer
 import kotlinx.android.synthetic.main.activity_main.*
 
 class vsRealPlayerActivity : AppCompatActivity() {
 
-    var ai1 : AiTicTacToe =
-        AiTicTacToe()
-    var playe : RealPlayer =
-        RealPlayer()
-    var g : Game = Game(ai1, playe)
+    var playe1 : RealPlayer = RealPlayer()
+    var playe2 : RealPlayer = RealPlayer()
+
+    var g : Game = Game(playe1, playe2)
+    var sd : PlayerVsPlayerController =
+        PlayerVsPlayerController(g)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vs_real_player)
-
-        ai1.pTurn = 0
-        playe.pTurn = 1
+        setContentView(R.layout.activity_main)
+        playe1.pTurn = 0
+        playe2.pTurn = 1
 
         viewttt.g = g
 
@@ -32,17 +34,18 @@ class vsRealPlayerActivity : AppCompatActivity() {
             object : View.OnTouchListener {
                 override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                     var p : Point = Point()
+
                     if (p1 != null) {
                         p.x = (p1.y / (viewttt.height / g.psize)).toInt()
                         p.y = (p1.x / (viewttt.width / g.psize)).toInt()
 
-                        //g.roundUser(p)
+                        sd.turni(p)
                     }
                     return true
                 }
-        })
+            })
     }
-    fun bclick(v: View)
+    fun bclick(v:View)
     {
         g.psize = 10
         g.needToWin = 5
