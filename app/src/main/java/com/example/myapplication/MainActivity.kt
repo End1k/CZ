@@ -14,31 +14,36 @@ import com.example.myapplication.player.RealPlayer
 class MainActivity : AppCompatActivity() {
 
     var ai1 : AiTicTacToe = AiTicTacToe()
-
     var playe : RealPlayer = RealPlayer()
 
     var g : Game = Game(ai1, playe)
-    var sd : PlayerVsAiController =
-        PlayerVsAiController(g)
+
+    var sd : PlayerVsAiController = PlayerVsAiController(g)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         ai1.pTurn = 0
         playe.pTurn = 1
 
         viewttt.g = g
 
+
+
         viewttt.setOnTouchListener(
             object : View.OnTouchListener {
                 override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-                    var p : Point = Point()
+                    if (p1?.action == MotionEvent.ACTION_DOWN )
+                    {
+                        var p : Point = Point()
 
-                    if (p1 != null) {
-                        p.x = (p1.y / (viewttt.height / g.psize)).toInt()
-                        p.y = (p1.x / (viewttt.width / g.psize)).toInt()
+                        if (p1 != null) {
+                            p.x = (p1.y / (viewttt.height / g.psize)).toInt()
+                            p.y = (p1.x / (viewttt.width / g.psize)).toInt()
 
-                        sd.turni(p)
+                            sd.turni(p)
+                        }
                     }
                     return true
                 }

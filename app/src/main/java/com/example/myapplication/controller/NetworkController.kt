@@ -1,39 +1,41 @@
 package com.example.myapplication.controller
 
 import android.graphics.Point
+import android.util.Log
 import com.example.myapplication.Game
 import com.google.firebase.database.*
 
-class NetworkController(gn: Game) : Controller(gn) {
-    var database: FirebaseDatabase =  FirebaseDatabase.getInstance()
-    var myRef : DatabaseReference = database.getReference()
+class NetworkController(gn: Game, myRef : DatabaseReference) : Controller(gn) {
+
     init {
         myRef.addChildEventListener(object : ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                var p :Point? = p0.getValue(Point::class.java)
+                setPlace(p!!, getSC())
+                turni(p!!)
+                Log.d("TEST","Q")
 
-                //turni(p0. )
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
         })
     }
 
+    //myRef.addChildEventListener
+
      fun lala(p : Point){
-         myRef.push()
+
      }
 
     override fun turni(p: Point) {

@@ -18,18 +18,25 @@ open class Controller(gn: Game) {
 
 
     fun checkTurn(): Boolean{
-        return (turn%2 == g.thisPlayer)
+        return (g.turn%2 == g.thisPlayer)
     }
     fun getPlayer(): Player?
     {
-        if (turn%2 == 1) return p1
-        if (turn%2 == 0) return p2
+        if (g.turn%2 == 1) return p1
+        if (g.turn%2 == 0) return p2
         return Player()
     }
     fun getC(): Int
     {
-        if (turn%2 == 1) return 1
-        if (turn%2 == 0) return 2
+        if (g.turn%2 == 1) return 1
+        if (g.turn%2 == 0) return 2
+        return 0
+    }
+
+    fun getSC(): Int
+    {
+        if (g.turn%2 == 1) return 2
+        if (g.turn%2 == 0) return 1
         return 0
     }
 

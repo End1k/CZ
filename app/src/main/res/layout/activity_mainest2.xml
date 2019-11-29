@@ -24,16 +24,32 @@
 
     <Button
         android:id="@+id/buttonP"
-        android:layout_width="288dp"
-        android:layout_height="157dp"
+        android:layout_width="282dp"
+        android:layout_height="135dp"
         android:background="@drawable/man"
+        android:onClick="toPlayer"
         android:text="PLAY VS REAL PLAYER"
         android:textColor="@color/BELIYYYYY"
         android:textSize="30sp"
-        android:onClick="toPlayer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
+
+    <Button
+        android:layout_width="289dp"
+        android:layout_height="138dp"
+        android:background="@drawable/man"
+        android:onClick="toEnternet"
+        android:text="play vs real player enternet"
+        android:textColor="@color/BELIYYYYY"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.827" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

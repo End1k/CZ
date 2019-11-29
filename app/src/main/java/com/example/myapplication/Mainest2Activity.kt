@@ -22,4 +22,9 @@ class Mainest2Activity : AppCompatActivity() {
         var next: Intent = Intent(this, vsRealPlayerActivity::class.java)
         startActivity(next)
     }
+    fun toEnternet(v: View)
+    {
+        var next: Intent = Intent(this, vsRealPlayerActivityEnternet::class.java)
+        startActivity(next)
+    }
 }
