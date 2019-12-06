@@ -14,47 +14,6 @@ class Game(val p1n: Player, val p2n : Player){
     var turn: Int = 0
     var thisPlayer: Int = 0
 
-//    fun round(){
-//        while (turn < psize*psize)
-//        {
-//            if (!check()) {
-//                if (turn % 2 == 0) {
-//                    var t: Point = p1.turning(this)
-//                    this.pole[t.x][t.y] = turn % 2 + 1
-//                    turn++
-//                }
-//
-//                if (turn % 2 == 1 && turn < psize*psize) {
-//                    var t: Point = p2.turning(this)
-//                    this.pole[t.x][t.y] = turn % 2 + 1
-//                    turn++
-//                }
-//            }
-//        }
-//    }
-
-//    fun roundUser(t: Point){
-//        if (thisplayer == 0)
-//        {
-//            p1.getCoordsOfTTC(this, t)
-//        }
-//        if (thisplayer == 1)
-//        {
-//            p2.getCoordsOfTTC(this, t)
-//        }
-//
-//
-//        if (this.pole[t.x.toInt()][t.y.toInt()] == 0 && (!check()))
-//        {
-//            this.pole[t.x.toInt()][t.y.toInt()] = turn % 2 + 1
-//            turn++
-//
-//            if (this.check()) {}
-//            round()
-//            if (this.check()) {}
-//        }
-//    }
-
     fun check( ) : Boolean
     { //диагонали
         for (i in 0..this.psize-this.needToWin) { //столбцы
@@ -252,4 +211,12 @@ class Game(val p1n: Player, val p2n : Player){
         }
         return false
     }
+
+    fun cleartheroof()
+    {
+        this.pole =  Array(psize, { Array(psize, {0})})
+        this.turn = 0
+    }
+
+
 }

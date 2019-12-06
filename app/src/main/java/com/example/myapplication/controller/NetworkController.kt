@@ -23,11 +23,11 @@ class NetworkController(gn: Game, myRef : DatabaseReference) : Controller(gn) {
                 setPlace(p!!, getSC())
                 turni(p!!)
                 Log.d("TEST","Q")
-
+                g.turn++
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
-
+                g.cleartheroof()
             }
         })
     }

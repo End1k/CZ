@@ -55,8 +55,7 @@ class vsRealPlayerActivityEnternet : AppCompatActivity() {
 
                         if (g.pole[p.x][p.y] == 0) {       //&& g.turn == 0
                             Log.d("TEST",g.turn.toString())
-                            g.pole[p.x][p.y] = sd.getC()
-                            g.turn++
+                                //g.pole[p.x][p.y] = sd.getC()
                             myRef.push().setValue(Point(p))
 
                         }
@@ -68,10 +67,6 @@ class vsRealPlayerActivityEnternet : AppCompatActivity() {
     }
     fun bclick(v:View)
     {
-        g.psize = 10
-        g.needToWin = 5
-        g.pole = Array(g.psize, { Array(g.psize, {0})})
-        g.turn = 0
         myRef.removeValue()
     }
 
