@@ -44,22 +44,23 @@ class vsRealPlayerActivityEnternet : AppCompatActivity() {
 
             object : View.OnTouchListener {
                 override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                    if (p1?.action == MotionEvent.ACTION_DOWN )
+                    {
+                        var p: Point = Point()
 
-                    var p: Point = Point()
-
-                    if (p1 != null) {
-                        p.x = (p1.y / (viewtt.height / g.psize)).toInt()
-                        p.y = (p1.x / (viewtt.width / g.psize)).toInt()
+                        if (p1 != null) {
+                            p.x = (p1.y / (viewtt.height / g.psize)).toInt()
+                            p.y = (p1.x / (viewtt.width / g.psize)).toInt()
 
 
 
-                        if (g.pole[p.x][p.y] == 0) {       //&& g.turn == 0
-                            Log.d("TEST",g.turn.toString())
+                            if (g.pole[p.x][p.y] == 0) {       //&& g.turn == 0
+                                Log.d("TEST",g.turn.toString())
                                 //g.pole[p.x][p.y] = sd.getC()
-                            myRef.push().setValue(Point(p))
+                                myRef.push().setValue(Point(p))
 
+                            }
                         }
-
                     }
                     return true
                 }
