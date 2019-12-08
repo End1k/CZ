@@ -35,6 +35,8 @@ class vsRealPlayerActivityEnternet : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vs_real_player_enternet)
 
+
+
         playe1.pTurn = 0
         playe2.pTurn = 1
 
@@ -42,29 +44,32 @@ class vsRealPlayerActivityEnternet : AppCompatActivity() {
 
         viewtt.setOnTouchListener(
 
-            object : View.OnTouchListener {
-                override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-                    if (p1?.action == MotionEvent.ACTION_DOWN )
-                    {
-                        var p: Point = Point()
-
-                        if (p1 != null) {
-                            p.x = (p1.y / (viewtt.height / g.psize)).toInt()
-                            p.y = (p1.x / (viewtt.width / g.psize)).toInt()
 
 
+                    object : View.OnTouchListener {
+                        override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
 
-                            if (g.pole[p.x][p.y] == 0) {       //&& g.turn == 0
-                                Log.d("TEST",g.turn.toString())
-                                //g.pole[p.x][p.y] = sd.getC()
-                                myRef.push().setValue(Point(p))
+                            if (p1?.action == MotionEvent.ACTION_DOWN )
+                            {
+                                var p: Point = Point()
 
+
+                                    if (p1 != null) {
+                                        p.x = (p1.y / (viewtt.height / g.psize)).toInt()
+                                        p.y = (p1.x / (viewtt.width / g.psize)).toInt()
+
+
+                                    if (sd.r)
+                                        if (g.pole[p.x][p.y] == 0) {       //&& g.turn == 0
+                                            Log.d("TEST",g.turn.toString())
+                                            sd.Myp = p
+                                            myRef.push().setValue(Point(p))
+                                        }
+                                }
                             }
+                            return true
                         }
-                    }
-                    return true
-                }
-            })
+                    })
     }
     fun bclick(v:View)
     {
