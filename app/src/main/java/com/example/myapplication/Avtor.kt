@@ -35,7 +35,7 @@ class Avtor : AppCompatActivity() {
         mAuth?.createUserWithEmailAndPassword(email, password)
             ?.addOnCompleteListener(this, OnCompleteListener { task ->
                 if(task.isSuccessful()){
-                    var user: FirebaseUser = getCurrentUser().mAuth
+                    //var user: FirebaseUser = getCurrentUser().mAuth
                 }
             })
 
